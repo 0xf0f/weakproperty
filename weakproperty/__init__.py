@@ -2,16 +2,19 @@ import weakref
 
 
 class weakproperty:
+    def __init__(self):
+        self.ref_name = f'[{id(self)}_ref]'
+
     def __get__(self, instance, owner):
         return getattr(
             instance,
-            f'{id(self)}_ref',
+            self.ref_name,
             lambda: None
         )()
 
     def __set__(self, instance, value):
         setattr(
             instance,
-            f'{id(self)}_ref',
+            self.ref_name,
             weakref.ref(value)
         )
