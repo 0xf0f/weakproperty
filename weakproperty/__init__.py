@@ -1,4 +1,4 @@
-import weakref
+from weakref import ref
 
 
 class weakproperty:
@@ -16,5 +16,5 @@ class weakproperty:
         setattr(
             instance,
             self.ref_name,
-            weakref.ref(value)
+            ref(value)
         )
