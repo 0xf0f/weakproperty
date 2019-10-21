@@ -18,3 +18,13 @@ class weakproperty:
             self.ref_name,
             ref(value)
         )
+
+    def __delete__(self, instance):
+        try:
+            delattr(
+                instance,
+                self.ref_name
+            )
+
+        except AttributeError:
+            pass
