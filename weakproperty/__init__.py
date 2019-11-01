@@ -27,5 +27,5 @@ class weakproperty:
             pass
 
     def __set_name__(self, owner, name):
-        self.ref_name = name
+        self.ref_name = f'_{name}_ref'
 
