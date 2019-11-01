@@ -2,9 +2,6 @@ from weakref import ref
 
 
 class weakproperty:
-    def __init__(self):
-        self.ref_name = f'[{id(self)}_ref]'
-
     def __get__(self, instance, owner):
         return getattr(
             instance,
@@ -28,3 +25,7 @@ class weakproperty:
 
         except AttributeError:
             pass
+
+    def __set_name__(self, owner, name):
+        self.ref_name = name
+
